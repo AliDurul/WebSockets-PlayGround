@@ -1,0 +1,13 @@
+.msg-div {
+    & ul {
+        list-style-type: none;
+    }
+
+    & li {
+        padding: 5px 0px;
+        background: #f9f9f9;
+        margin: 5px;
+        border-radius: 5px;
+    }
+
+}
