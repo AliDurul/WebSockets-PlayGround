@@ -1,8 +1,6 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/Home";
 import Auth from "./pages/Auth/Auth";
-import Profile from "./pages/Profile/Profile";
 import { useSelector } from "react-redux";
 import Chat from "./pages/Chat/Chat";
 
@@ -33,10 +31,6 @@ function App() {
           path="/auth"
           element={user ? <Navigate to="../home" /> : <Auth />}
         />
-        {/* <Route
-          path="/profile/:id"
-          element={user ? <Profile /> : <Navigate to="../auth" />}
-        /> */}
         <Route
           path="*"
           element={
@@ -45,11 +39,6 @@ function App() {
             </main>
           }
         />
-
-        {/* <Route
-          path="/chat"
-          element={user ? <Chat /> : <Navigate to="../auth" />}
-        /> */}
       </Routes>
     </div>
   );

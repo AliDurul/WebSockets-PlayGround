@@ -1,16 +1,18 @@
 import React, { useRef, useState } from "react";
 import ChatBox from "../../components/ChatBox/ChatBox";
 import Conversation from "../../components/Coversation/Conversation";
-import LogoSearch from "../../components/LogoSearch/LogoSearch";
-import NavIcons from "../../components/NavIcons/NavIcons";
 import "./Chat.css";
 import { useEffect } from "react";
 import { userChats } from "../../api/ChatRequests";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import { logout } from "../../actions/AuthActions";
 
 const Chat = () => {
   const socket = useRef();
+  const dispatch = useDispatch()
+
+
   const { user } = useSelector((state) => state.authReducer.authData);
 
   const [chats, setChats] = useState([]);
@@ -65,11 +67,17 @@ const Chat = () => {
     return online ? true : false;
   };
 
+  const handleLogOut = () => {
+    dispatch(logout())
+  }
   return (
     <div className="Chat">
       {/* Left Side */}
       <div className="Left-side-chat">
-        <LogoSearch />
+        <div className="LogoSearch">
+          {/* <img src={Logo} alt="" /> */}
+          <button className="button logout-button" onClick={handleLogOut}>Log Out</button>
+        </div>
         <div className="Chat-container">
           <h2>Chats</h2>
           <div className="Chat-list">
